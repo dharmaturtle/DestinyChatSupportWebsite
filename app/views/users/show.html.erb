@@ -1,0 +1,22 @@
+<%= render :partial => 'search_form' %>
+<% if @messages.blank? %>
+    <p>No messages for "<%= params[:id] %>"</p>
+<% else %>
+    <%= paginate @messages %>
+    <%= render :partial => 'layouts/flashmessage'%>
+    <div class="innerbox">
+    <table>
+        <tr><td colspan="3"><span class="timezone">Times are given in <%= @messages.first.time.strftime("%Z") %>.</span></td></tr>
+        <% @messages.each do |m| %>
+            <tr>
+              <td class="time" title="<%= m.time.strftime("%m/%d/%Y %I:%M:%S %p %Z") %>" ><%= m.time.strftime("%b %-d, %-I:%M %P") %></td>
+              <% if admin? %>
+                <td class="hostname" title="hostname of user sending message." ><%= m.hostname %></td>
+              <% end %>
+              <td class="message"><%= m.message %></td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @messages %>
+<% end %>

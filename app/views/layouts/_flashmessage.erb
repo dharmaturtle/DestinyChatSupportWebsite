@@ -1,0 +1,7 @@
+<% if flash[:notice].present? %>
+  <div class="slide">
+    <div class="innerslide">
+      <%= flash[:notice] %> <a class="close"> &nbsp; [X]</a>
+    </div>
+  </div>
+<% end %>

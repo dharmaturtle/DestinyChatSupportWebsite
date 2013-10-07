@@ -1,0 +1,19 @@
+<div class="pollbox">
+  <% @poll.answers.each do |a| %>
+    <div class="choice">
+      <%= "Choice #{a.choice}:" %>
+      <%= "#{a.answer}" %>
+    </div>
+    <div class="meter-wrap">
+      <div class="meter-value" id="<%= "meter-value-choice#{a.choice}" %>" style="background-color: #4DA4F3; width: <%= "#{(a.votes.to_f / @total_votes) * 100}%" %> ;">
+        <div class="meter-text">
+          <%= "#{((a.votes.to_f / @total_votes) * 100).round(2)}% (#{a.votes})" %>
+        </div>
+      </div>
+    </div>
+    <br/>
+  <% end %>
+  <div class="total">
+    Total Votes: <%= @total_votes %>
+  </div>
+</div>

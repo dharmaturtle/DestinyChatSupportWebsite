@@ -1,0 +1,24 @@
+<div class="search">Create Poll</div>
+<div class="innerbox">
+<%= form_for(@poll) do |f| %>
+  <% if @poll.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+    <ul>
+    <% @poll.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :"Question:" %>
+    <%= f.text_field :question %>
+  </p>
+  <%= f.fields_for :answers do |builder| %>
+    <%= render 'answer_fields', :f => builder %>
+  <% end %>
+    <%#= link_to_add_fields "Add Answer", f, :answers %>
+  <p><%= f.submit %></p>
+<% end %>
+</div>

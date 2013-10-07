@@ -1,0 +1,7 @@
+<p class="fields">
+  <%= f.label :answer, "Answer:" %>
+  <%= f.text_field :answer %>
+  <%= f.hidden_field :votes, :value => 0 %>
+  <%= f.hidden_field :choice %>
+  <%#= link_to_remove_fields "remove", f %>
+</p>

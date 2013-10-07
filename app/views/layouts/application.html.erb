@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= get_title %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/redmond/jquery-ui.css" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+    <!--
+    $(document).ready(function() {
+        var $marginLefty = $('div.slide div.innerslide');
+        $marginLefty.css({
+          marginLeft: 0
+        });
+        $('a.close').click(function() {
+          $marginLefty.animate({
+            marginLeft: (-$marginLefty.outerWidth()-19)
+          }, 500, 'linear', function(){
+            $('.slide').slideUp();
+          });
+        });
+    });
+    -->
+    </script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29983607-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</head>
+<body>
+
+<ul id="navigation">
+    <li<%= " class = 'selected gradient'" if controller.controller_name == 'users' %>><%= link_to "Users", { :controller => 'users' }, :class => 'Menu' %></li>
+    <li<%= " class = 'selected gradient'" if controller.controller_name == 'search' %>><%= link_to "Text Search", { :controller => 'search' }, :class => 'Menu' %></li>
+    <li<%= " class = 'selected gradient'" if controller.controller_name == 'polls' %>><%= link_to "Poll", { :controller => 'polls' }, :class => 'Menu' %></li>
+    <li<%= " class = 'selected gradient'" if controller.controller_name == 'stats' %>><%= link_to "Stats", { :controller => 'stats', :action => 'top' }, :class => "Menu",  %></li>
+</ul>
+
+<div class="outerbox">
+<%= yield %>
+</div>
+
+<%= debug(params) if Rails.env.development? %>
+</body>
+</html>

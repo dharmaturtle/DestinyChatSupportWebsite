@@ -1,0 +1,9 @@
+<div class="search">Login</div>
+<div class="innerbox">
+<%= form_tag sessions_path do %>
+  <div>
+    Password: <%= password_field_tag :password %>
+    <%= submit_tag "Login" %>
+  </div>
+<% end %>
+</div>

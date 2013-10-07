@@ -1,0 +1,29 @@
+<div class="search">
+<% if admin? %>
+  <%= link_to "New Poll", :action => "new" %>
+  <span class="right"><%= link_to "Logout", :controller => :sessions, :action => :destroy %></span>
+  <div style="clear: both;"></div>
+<% else %>
+  <%= link_to "Login", :controller => :sessions, :action => :new %>
+<% end %>
+</div>
+
+<%= render :partial => 'layouts/flashmessage'%>
+
+<div class="innerbox">
+<% if @poll.blank? %>
+  <p>There are no polls on record.</p>
+<% else %>
+  <table>
+  <% @poll.each do |poll| %>
+    <tr>
+      <td class="time"><%= poll.created_at.strftime("%b %-d, %-I:%M %P %Z") %></td>
+      <td><%= link_to poll.question, { :controller => 'polls', :action => 'show', :id => poll.id }, :class => 'polllink' -%></td>
+      <% if admin? %>
+      <td> &nbsp; &nbsp; <%= link_to "[X]", poll, :method => :delete, :class => 'action',:title => "Delete this poll", :confirm => 'Delete this poll?' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+</div>

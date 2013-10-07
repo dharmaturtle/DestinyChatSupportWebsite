@@ -1,0 +1,18 @@
+<% if @poll.blank? %>
+    <div class="innerbox">
+      There are no polls on record.
+    </div>
+<% else %>
+  <div class="search question"><%= @poll.question %></div>
+    <br/>
+  <div id="answers" data-id="<%= @poll.id %>">
+    <%= render :partial => 'answers' %>
+  </div>
+    <br/>
+    <br/>
+    <br/>
+<% end %>
+
+<div class="update">
+  <%#= link_to "Update", { :controller => 'polls', :action => 'show', :id => @poll.id } -%>
+</div>

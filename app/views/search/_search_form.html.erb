@@ -1,0 +1,9 @@
+<div class="search">
+  <%= form_tag :new_search , :method=> :get do %>
+    <div>
+      Text Search:
+      <%= text_field_tag(:id, params[:id]) %>
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+  <% end %>
+</div>

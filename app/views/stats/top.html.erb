@@ -1,0 +1,20 @@
+<%# cache("stats",:action => 'top', :expires_in => 5.minutes) do %>
+    <div class="search">Updated at: <%= DateTime.now.utc %></div>
+
+    <%= render :partial => 'layouts/flashmessage'%>
+
+    <div class="innerbox">
+    <table>
+        <tr><th>Rank</th>
+        <th></th>
+        <th>Line Count</th></tr>
+        <% @messages.each_with_index do |user, index| %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user[0] %></td>
+                <td><%= user[1] %></td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+<%# end %>
